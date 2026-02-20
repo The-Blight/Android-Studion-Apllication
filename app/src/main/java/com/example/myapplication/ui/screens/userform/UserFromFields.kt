@@ -1,18 +1,26 @@
 package com.example.myapplication.ui.screens.userform
 
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.components.FormTextField
 
-data class FormFieldsState (
+
+data class FormFieldsState(
     val lastName: String,
     val firstName: String,
     val patronymic: String,
@@ -20,10 +28,7 @@ data class FormFieldsState (
     val submitted: Boolean
 ) {
     val isValid: Boolean
-        get() = lastName.isNotBlank() &&
-                firstName.isNotBlank() &&
-                patronymic.isNotBlank() &&
-                birthDate.isNotBlank()
+        get() = lastName.isNotBlank() && firstName.isNotBlank() && patronymic.isNotBlank() && birthDate.isNotBlank()
 }
 
 
@@ -34,12 +39,14 @@ data class FormFieldsCallbacks(
     val onBirthDateChange: (String) -> Unit
 )
 
+
 @Composable
 fun UserFormFields(
-    state: FormFieldsState,
-    callbacks: FormFieldsCallbacks
+    state: FormFieldsState, callbacks: FormFieldsCallbacks
+
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+    Column( verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
         Text("Личные данные", fontSize = 20.sp, color = Color.Black)
         Text("Заполните все поля для продолжения", fontSize = 14.sp, color = Color.Gray)
         Spacer(modifier = Modifier.height(8.dp))
@@ -66,7 +73,7 @@ fun UserFormFields(
         )
 
         FormTextField(
-            value =  state.birthDate,
+            value = state.birthDate,
             onValueChange = callbacks.onBirthDateChange,
             label = "Дата рождения",
             placeholder = "ДД.ММ.ГГГГ",

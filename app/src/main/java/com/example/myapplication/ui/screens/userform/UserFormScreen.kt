@@ -4,15 +4,25 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.components.UserFormButtons
 
+
+
+fun Modifier.scrollableForm(): Modifier = composed {
+    verticalScroll(rememberScrollState())
+        .imePadding()
+        .padding(30.dp)
+
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,8 +56,7 @@ fun UserFormScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
+                .scrollableForm(),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             UserFormFields(
@@ -55,8 +64,6 @@ fun UserFormScreen() {
                     lastName, firstName, patronymic, birthDate, submitted
                 ), callbacks = callbacks
             )
-
-            Spacer(modifier = Modifier.weight(1f))
 
             UserFormButtons(onSave = { submitted = true }, onShowInformation = {
                 val state = FormFieldsState(lastName, firstName, patronymic, birthDate, submitted)
