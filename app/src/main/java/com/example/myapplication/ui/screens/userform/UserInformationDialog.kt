@@ -64,12 +64,13 @@ fun UserInformationDialog(
                             .size(48.dp)
                             .clip(CircleShape)
                             .background(Color.White.copy(alpha = 0.1f)),
+                        contentAlignment = Alignment.Center
                     ) {
                         Icon(
                             Icons.Default.AccountCircle,
                             contentDescription = null,
                             tint = Color.White,
-                            modifier = Modifier.size(28.dp)
+                            modifier = Modifier.size(38.dp)
                         )
                     }
                     Column {

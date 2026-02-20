@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.ui.theme.DarkCharcoal
 
 @Composable
 fun UserFormButtons(
@@ -48,7 +49,7 @@ fun UserFormButtons(
                 .height(52.dp),
             shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF333333),
+                containerColor = DarkCharcoal,
                 contentColor = Color.White
             )
         ) {
