@@ -57,5 +57,20 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
+    plugins {
+        id("com.android.application")
+        id("org.jetbrains.kotlin.android")
+        id("org.jetbrains.kotlin.plugin.serialization")
+    }
+
+    android {
+        // твои настройки
+    }
+
+    dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    }
 
 }
